@@ -1,0 +1,198 @@
+/* ============================================
+   PALETA DE COLORES - KidsWear
+   Modificá acá para cambiar toda la app
+   ============================================ */
+
+:root {
+  /* --- Colores Primarios --- */
+  --color-rosa:        #FFB3D9;   /* Rosa principal (dado por el cliente: rgb 255,214,250 → ajustado a más vibrante) */
+  --color-rosa-light:  #FFD6F5;   /* Rosa suave original cliente */
+  --color-rosa-dark:   #E07BB5;   /* Rosa oscuro para hover/active */
+
+  /* --- Colores Secundarios --- */
+  --color-lavanda:     #C5BFFF;   /* Lavanda (dado cliente: rgb 219,214,255 → más saturado) */
+  --color-lavanda-light: #DBD6FF; /* Lavanda suave original cliente */
+
+  --color-amarillo:    #F5F2A0;   /* Amarillo suave (dado cliente: rgb 252,255,214) */
+  --color-amarillo-dark: #D4C94A; /* Amarillo oscuro para badges/tags */
+
+  /* --- Colores de Soporte --- */
+  --color-menta:       #B8F0D8;   /* Verde menta: CTAs secundarios, badges de "nuevo" */
+  --color-menta-dark:  #4CAF82;   /* Verde menta oscuro para texto sobre menta */
+
+  /* --- Neutros --- */
+  --color-white:       #FFFFFF;
+  --color-bg:          #FAFAF8;   /* Fondo general: casi blanco con toque cálido */
+  --color-surface:     #F4F0FB;   /* Fondo de tarjetas/secciones: lavanda muy suave */
+  --color-border:      #E8E4F2;   /* Bordes sutiles */
+  --color-text:        #2D2640;   /* Texto principal: índigo muy oscuro (no negro puro) */
+  --color-text-muted:  #8B84A8;   /* Texto secundario/subtítulos */
+  --color-text-light:  #B8B2CE;   /* Texto placeholder/deshabilitado */
+
+  /* --- Estado / Feedback --- */
+  --color-success:     #4CAF82;
+  --color-warning:     #F5C842;
+  --color-error:       #E05C7B;
+  --color-info:        #7B8FE0;
+
+  /* ============================================
+     TIPOGRAFÍA
+     ============================================ */
+  --font-display:   'Nunito', 'Fredoka One', sans-serif;  /* Títulos - redondeado y amigable */
+  --font-body:      'Inter', 'Nunito', sans-serif;         /* Cuerpo - legible y moderno */
+
+  --text-xs:   0.75rem;   /* 12px */
+  --text-sm:   0.875rem;  /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg:   1.125rem;  /* 18px */
+  --text-xl:   1.25rem;   /* 20px */
+  --text-2xl:  1.5rem;    /* 24px */
+  --text-3xl:  1.875rem;  /* 30px */
+  --text-4xl:  2.25rem;   /* 36px */
+  --text-5xl:  3rem;      /* 48px */
+
+  --font-normal:  400;
+  --font-medium:  500;
+  --font-semibold: 600;
+  --font-bold:    700;
+  --font-extrabold: 800;
+
+  /* ============================================
+     ESPACIADO
+     ============================================ */
+  --space-1:  0.25rem;   /* 4px */
+  --space-2:  0.5rem;    /* 8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+
+  /* ============================================
+     BORDES Y SOMBRAS
+     ============================================ */
+  --radius-sm:   0.375rem;  /* 6px */
+  --radius-md:   0.75rem;   /* 12px */
+  --radius-lg:   1rem;      /* 16px */
+  --radius-xl:   1.5rem;    /* 24px */
+  --radius-full: 9999px;    /* Pill/círculo */
+
+  --shadow-sm:  0 1px 3px rgba(45, 38, 64, 0.08);
+  --shadow-md:  0 4px 12px rgba(45, 38, 64, 0.12);
+  --shadow-lg:  0 8px 24px rgba(45, 38, 64, 0.16);
+  --shadow-card: 0 2px 8px rgba(45, 38, 64, 0.08);
+
+  /* ============================================
+     TRANSICIONES
+     ============================================ */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+
+  /* ============================================
+     LAYOUT
+     ============================================ */
+  --max-width:    1200px;
+  --navbar-height: 70px;
+  --sidebar-width: 280px;
+}
+
+/* ============================================
+   RESET Y BASE
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ============================================
+   UTILIDADES GLOBALES
+   ============================================ */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.section-padding {
+  padding: var(--space-16) 0;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-extrabold);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.section-subtitle {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-8);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge--new     { background: var(--color-menta);    color: var(--color-menta-dark); }
+.badge--sale    { background: var(--color-rosa);     color: var(--color-rosa-dark); }
+.badge--off     { background: var(--color-amarillo); color: #7A7000; }
+
+/* Responsive base */
+@media (max-width: 768px) {
+  .container { padding: 0 var(--space-4); }
+  .section-padding { padding: var(--space-12) 0; }
+  .section-title { font-size: var(--text-2xl); }
+}
