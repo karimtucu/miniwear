@@ -1,8 +1,5 @@
 import { useState } from "react";
-<<<<<<< HEAD
 import { Link } from "react-router-dom";
-=======
->>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
 import "./LoginModal.css";
 
 // ============================================
@@ -78,13 +75,8 @@ export default function LoginModal({ isOpen, onClose }) {
           </form>
 
           <div className="login-links">
-<<<<<<< HEAD
             <Link to="/recuperar-password" onClick={onClose}>¿Olvidaste tu contraseña?</Link>
             <Link to="/registro" onClick={onClose}>Crear cuenta</Link>
-=======
-            <a href="/recuperar-password">¿Olvidaste tu contraseña?</a>
-            <a href="/registro">Crear cuenta</a>
->>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
           </div>
         </div>
 

@@ -1,5 +1,4 @@
 import { useState } from "react";
-<<<<<<< HEAD
 import { PRODUCTS } from "../../data/products";
 import "./ProductGrid.css";
 
@@ -8,23 +7,6 @@ import "./ProductGrid.css";
 // (fuente compartida con las páginas de categoría)
 // ============================================
 const MOCK_PRODUCTS = PRODUCTS;
-=======
-import "./ProductGrid.css";
-
-// ============================================
-// PRODUCTOS MOCK — reemplazá con datos reales del backend
-// ============================================
-const MOCK_PRODUCTS = [
-  { id: 1, name: "Campera Puffer Rosa",    category: "ninas",  price: 18500, originalPrice: 26000, discount: 30, size: ["2", "4", "6", "8"],    isNew: false, image: null, emoji: "🧥" },
-  { id: 2, name: "Buzo Astronauta",        category: "ninos",  price: 12000, originalPrice: null,   discount: 0,  size: ["4", "6", "8", "10"],   isNew: true,  image: null, emoji: "👕" },
-  { id: 3, name: "Pelele Invierno",        category: "bebes",  price: 9800,  originalPrice: 14000,  discount: 30, size: ["0-3m", "3-6m", "6-12m"],isNew: false, image: null, emoji: "🍼" },
-  { id: 4, name: "Conjunto Deportivo Nena",category: "ninas",  price: 15200, originalPrice: null,   discount: 0,  size: ["4", "6", "8", "10"],   isNew: true,  image: null, emoji: "🩳" },
-  { id: 5, name: "Remera Gol",             category: "ninos",  price: 6900,  originalPrice: 9900,   discount: 30, size: ["4", "6", "8", "10", "12"], isNew: false, image: null, emoji: "⚽" },
-  { id: 6, name: "Body Algodón Pack x3",   category: "bebes",  price: 11500, originalPrice: null,   discount: 0,  size: ["0-3m", "3-6m"],        isNew: true,  image: null, emoji: "👶" },
-  { id: 7, name: "Campera Impermeable",    category: "ninos",  price: 22000, originalPrice: 31000,  discount: 30, size: ["6", "8", "10", "12"],   isNew: false, image: null, emoji: "🧥" },
-  { id: 8, name: "Vestido Flores",         category: "ninas",  price: 13500, originalPrice: null,   discount: 0,  size: ["2", "4", "6", "8"],    isNew: true,  image: null, emoji: "👗" },
-];
->>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
 
 const FILTERS = [
   { id: "todos",  label: "Todos" },

@@ -10,12 +10,8 @@
   },
   "dependencies": {
     "react": "^18.3.1",
-<<<<<<< HEAD
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.18.0"
-=======
-    "react-dom": "^18.3.1"
->>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",

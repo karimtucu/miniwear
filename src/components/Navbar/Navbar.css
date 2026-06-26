@@ -83,7 +83,6 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   padding: var(--space-2);
-<<<<<<< HEAD
   min-width: 180px;
   animation: dropdownIn var(--transition-fast) ease;
 }
@@ -99,12 +98,6 @@
   height: var(--space-2);
 }
 
-=======
-  min-width: 160px;
-  animation: dropdownIn var(--transition-fast) ease;
-}
-
->>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
 @keyframes dropdownIn {
   from { opacity: 0; transform: translateY(-6px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -146,7 +139,6 @@
   background: var(--color-surface);
 }
 
-<<<<<<< HEAD
 /* Botón Iniciar Sesión (acción del compañero) */
 .navbar__login-btn {
   padding: var(--space-2) var(--space-5);
@@ -164,8 +156,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-=======
->>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
 /* Carrito */
 .navbar__cart {
   position: relative;
@@ -220,12 +210,8 @@
   animation: dropdownIn var(--transition-fast) ease;
 }
 
-<<<<<<< HEAD
 .navbar__search-bar .container,
 .navbar__search-form {
-=======
-.navbar__search-bar .container {
->>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -248,7 +234,6 @@
   border-color: var(--color-rosa-dark);
 }
 
-<<<<<<< HEAD
 .navbar__search-submit {
   width: 42px;
   height: 42px;
@@ -267,8 +252,6 @@
   background: var(--color-text);
 }
 
-=======
->>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
 .navbar__search-close {
   padding: var(--space-2) var(--space-4);
   color: var(--color-text-muted);
@@ -301,7 +284,6 @@
   background: var(--color-surface);
 }
 
-<<<<<<< HEAD
 /* Subcategorías visibles siempre en mobile (no hay hover en touch) */
 .navbar__mobile-submenu {
   display: flex;
@@ -321,30 +303,20 @@
   color: var(--color-rosa-dark);
 }
 
-=======
->>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
 .navbar__mobile-divider {
   height: 4px;
   background: var(--color-surface);
 }
 
-<<<<<<< HEAD
 .navbar__mobile-login {
   width: 100%;
   text-align: left;
 }
 
-=======
->>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .navbar__links { display: none; }
   .navbar__action-btn:not(.navbar__cart) { display: none; }
-<<<<<<< HEAD
   .navbar__login-btn { display: none; }
   .navbar__hamburger { display: flex; }
 }
-=======
-  .navbar__hamburger { display: flex; }
-}
->>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
