@@ -1,15 +1,22 @@
+import { useState } from "react";
 import "./ComplaintButton.css";
+import ComplaintModal from "../ComplaintModal/ComplaintModal";
 
 // ============================================
 // BOTÓN DE QUEJAS Y RECLAMOS
-// Convertido del HTML/CSS de mi compañero a React.
-// Botón flotante fijo abajo a la derecha.
+// Ahora abre el ComplaintModal en lugar de navegar a otra página.
 // ============================================
 
-export default function ComplaintButton({ href = "/reclamos" }) {
+export default function ComplaintButton() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <a href={href} className="complaint-btn">
-      💬 Ayuda y Reclamos
-    </a>
+    <>
+      <button className="complaint-btn" onClick={() => setIsOpen(true)}>
+        💬 Ayuda y Reclamos
+      </button>
+
+      <ComplaintModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+    </>
   );
 }
