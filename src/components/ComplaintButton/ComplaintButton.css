@@ -1,0 +1,45 @@
+/* ============================================
+   BOTÓN DE QUEJAS Y RECLAMOS
+   Posicionado a la izquierda del chatbot para que no se tapen
+   (el chatbot ocupa bottom-right, ver Chatbot.css)
+   ============================================ */
+
+.complaint-btn {
+  position: fixed;
+  bottom: var(--space-6);
+  right: 96px; /* deja lugar al FAB del chatbot (58px + espacio) */
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  background: linear-gradient(135deg, var(--color-rosa-dark), var(--color-lavanda));
+  color: var(--color-white);
+  text-decoration: none;
+
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-full);
+
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+
+  box-shadow: var(--shadow-md);
+  z-index: 198; /* debajo del chatbot (199/200) pero arriba del resto */
+
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.complaint-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── RESPONSIVE ── */
+/* En mobile el chatbot achica su panel, acá movemos el botón arriba del FAB
+   para que no se solapen en pantallas chicas */
+@media (max-width: 480px) {
+  .complaint-btn {
+    right: var(--space-3);
+    bottom: calc(var(--space-3) + 68px); /* arriba del botón flotante del chat */
+  }
+}

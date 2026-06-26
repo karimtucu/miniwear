@@ -1,0 +1,195 @@
+/* ============================================
+   LOGIN MODAL
+   Mismo diseño que hizo mi compañero, adaptado a las
+   variables de color del proyecto (var(--color-...))
+   ============================================ */
+
+.login-modal {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgba(45, 38, 64, 0.55);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  animation: loginFadeIn var(--transition-base) ease;
+}
+
+@keyframes loginFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Contenedor */
+.login-container {
+  width: 900px;
+  max-width: 95%;
+  min-height: 520px;
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  margin: 5vh auto;
+  box-shadow: var(--shadow-lg);
+  animation: loginSlideUp var(--transition-base) ease;
+}
+
+@keyframes loginSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Cerrar */
+.close-login {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-6);
+  border: none;
+  background: none;
+  font-size: 32px;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  line-height: 1;
+  z-index: 1;
+  transition: color var(--transition-fast);
+}
+
+.close-login:hover {
+  color: var(--color-text);
+}
+
+/* Lado izquierdo: branding */
+.login-left {
+  flex: 1;
+  background: linear-gradient(135deg, var(--color-rosa), var(--color-lavanda));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-10);
+}
+
+.login-left .brand {
+  font-size: 70px;
+}
+
+.login-left h2 {
+  margin-top: var(--space-5);
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-extrabold);
+  color: var(--color-text);
+}
+
+.login-left p {
+  margin-top: var(--space-4);
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  opacity: 0.75;
+  max-width: 300px;
+}
+
+/* Lado derecho: formulario */
+.login-right {
+  flex: 1;
+  padding: var(--space-16) var(--space-12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-right h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-extrabold);
+  color: var(--color-text);
+}
+
+.login-right .subtitle {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-6);
+  color: var(--color-text-muted);
+}
+
+.login-right form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.login-right input {
+  height: 52px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 0 var(--space-5);
+  font-size: var(--text-sm);
+  font-family: var(--font-body);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.login-right input:focus {
+  border-color: var(--color-rosa-dark);
+}
+
+.login-error {
+  font-size: var(--text-sm);
+  color: var(--color-error);
+  font-weight: var(--font-medium);
+}
+
+.btn-login {
+  height: 52px;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-rosa-dark), var(--color-lavanda));
+  color: var(--color-white);
+  font-size: var(--text-base);
+  font-weight: var(--font-bold);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.login-links {
+  margin-top: var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.login-links a {
+  text-decoration: none;
+  color: var(--color-rosa-dark);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  transition: color var(--transition-fast);
+}
+
+.login-links a:hover {
+  color: var(--color-text);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .login-container {
+    flex-direction: column;
+    min-height: auto;
+    margin: var(--space-4) auto;
+  }
+  .login-left {
+    padding: var(--space-8);
+  }
+  .login-right {
+    padding: var(--space-8) var(--space-6);
+  }
+}

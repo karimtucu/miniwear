@@ -13,6 +13,7 @@ import ProductGrid     from "./components/ProductGrid/ProductGrid";
 import Newsletter      from "./components/Newsletter/Newsletter";
 import Footer          from "./components/Footer/Footer";
 import Chatbot         from "./components/Chatbot/Chatbot";
+import ComplaintButton from "./components/ComplaintButton/ComplaintButton";
 
 // Banner de anuncio (opcional — podés comentarlo si no lo necesitás)
 function AnnouncementBar() {
@@ -67,6 +68,9 @@ export default function App() {
 
       {/* Chatbot flotante */}
       <Chatbot />
+
+      {/* Botón de quejas y reclamos (componente de mi compañero) */}
+      <ComplaintButton />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Navbar.css";
+import LoginModal from "../LoginModal/LoginModal";
 
 // ============================================
 // DATOS DE NAVEGACIÓN — modificá acá las secciones
@@ -17,6 +18,7 @@ export default function Navbar() {
   const [activeMenu, setActiveMenu]   = useState(null);
   const [cartCount]                   = useState(0); // conectar con contexto de carrito
   const [searchOpen, setSearchOpen]   = useState(false);
+  const [loginOpen, setLoginOpen]     = useState(false); // controla el modal de login
 
   return (
     <header className="navbar">
@@ -80,9 +82,9 @@ export default function Navbar() {
             🤍
           </button>
 
-          {/* Usuario */}
-          <button className="navbar__action-btn" aria-label="Mi cuenta">
-            👤
+          {/* Iniciar sesión — abre el modal de login */}
+          <button className="navbar__login-btn" onClick={() => setLoginOpen(true)}>
+            Iniciar Sesión
           </button>
 
           {/* Carrito */}
@@ -130,10 +132,14 @@ export default function Navbar() {
             </a>
           ))}
           <div className="navbar__mobile-divider" />
-          <a href="/cuenta" className="navbar__mobile-link">Mi cuenta</a>
+          <button className="navbar__mobile-link navbar__mobile-login" onClick={() => { setLoginOpen(true); setMenuOpen(false); }}>
+            Iniciar sesión
+          </button>
           <a href="/favoritos" className="navbar__mobile-link">Favoritos</a>
         </div>
       )}
+      {/* ── Modal de login (componente de mi compañero, convertido a React) ── */}
+      <LoginModal isOpen={loginOpen} onClose={() => setLoginOpen(false)} />
     </header>
   );
 }
