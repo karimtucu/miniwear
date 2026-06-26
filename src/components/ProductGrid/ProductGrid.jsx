@@ -139,8 +139,10 @@ function ProductCard({ product, isWishlisted, onToggleWishlist }) {
 
         {/* Precio */}
         <div className="product-card__price">
-          <span className="product-card__price-current">{formatPrice(product.price)}</span>
-          {product.originalPrice && (
+          <span className="product-card__price-current">
+            {product.price > 0 ? formatPrice(product.price) : "Consultar"}
+          </span>
+          {product.price > 0 && product.originalPrice && (
             <span className="product-card__price-original">{formatPrice(product.originalPrice)}</span>
           )}
         </div>
