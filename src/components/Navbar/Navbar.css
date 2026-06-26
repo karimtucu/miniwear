@@ -1,0 +1,322 @@
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  height: var(--navbar-height);
+}
+
+.navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: var(--space-6);
+}
+
+/* Logo */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.navbar__logo-icon {
+  font-size: var(--text-2xl);
+}
+
+.navbar__logo-text strong {
+  color: var(--color-rosa-dark);
+}
+
+/* Links navegación */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex: 1;
+  justify-content: center;
+}
+
+.navbar__item {
+  position: relative;
+}
+
+.navbar__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.navbar__link:hover {
+  background: var(--color-lavanda-light);
+  color: var(--color-rosa-dark);
+}
+
+.navbar__chevron {
+  font-size: var(--text-xs);
+  opacity: 0.6;
+}
+
+/* Dropdown */
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 0;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-2);
+  min-width: 180px;
+  animation: dropdownIn var(--transition-fast) ease;
+}
+
+/* Puente invisible: ocupa el espacio entre el link y el dropdown
+   para que el mouse nunca quede "fuera" de ambos al moverse en diagonal.
+   Esto es lo que arregla que el menú se cerrara antes de poder elegir. */
+.navbar__dropdown-bridge {
+  position: absolute;
+  top: calc(-1 * var(--space-2));
+  left: 0;
+  right: 0;
+  height: var(--space-2);
+}
+
+@keyframes dropdownIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.navbar__dropdown-item {
+  display: block;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.navbar__dropdown-item:hover {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* Acciones */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.navbar__action-btn {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  font-size: var(--text-lg);
+  transition: background var(--transition-fast);
+}
+
+.navbar__action-btn:hover {
+  background: var(--color-surface);
+}
+
+/* Botón Iniciar Sesión (acción del compañero) */
+.navbar__login-btn {
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--color-text);
+  background: linear-gradient(135deg, var(--color-rosa), var(--color-lavanda));
+  white-space: nowrap;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.navbar__login-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Carrito */
+.navbar__cart {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  font-size: var(--text-lg);
+  background: var(--color-rosa-light);
+  transition: background var(--transition-fast);
+}
+
+.navbar__cart:hover {
+  background: var(--color-rosa);
+}
+
+.navbar__cart-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--color-rosa-dark);
+  color: var(--color-white);
+  font-size: 10px;
+  font-weight: var(--font-bold);
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hamburguesa - solo mobile */
+.navbar__hamburger {
+  display: none;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  font-size: var(--text-lg);
+  background: var(--color-surface);
+}
+
+/* Buscador expandido */
+.navbar__search-bar {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-3) 0;
+  animation: dropdownIn var(--transition-fast) ease;
+}
+
+.navbar__search-bar .container,
+.navbar__search-form {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.navbar__search-input {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  border: 2px solid var(--color-lavanda);
+  border-radius: var(--radius-full);
+  font-size: var(--text-base);
+  font-family: var(--font-body);
+  background: var(--color-white);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.navbar__search-input:focus {
+  border-color: var(--color-rosa-dark);
+}
+
+.navbar__search-submit {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-rosa-dark);
+  color: var(--color-white);
+  border-radius: var(--radius-full);
+  font-size: var(--text-base);
+  transition: background var(--transition-fast);
+}
+
+.navbar__search-submit:hover {
+  background: var(--color-text);
+}
+
+.navbar__search-close {
+  padding: var(--space-2) var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-fast);
+}
+
+.navbar__search-close:hover {
+  background: var(--color-border);
+}
+
+/* Menú mobile */
+.navbar__mobile-menu {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  animation: dropdownIn var(--transition-base) ease;
+}
+
+.navbar__mobile-link {
+  padding: var(--space-4) var(--space-6);
+  font-weight: var(--font-semibold);
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition-fast);
+}
+
+.navbar__mobile-link:hover {
+  background: var(--color-surface);
+}
+
+/* Subcategorías visibles siempre en mobile (no hay hover en touch) */
+.navbar__mobile-submenu {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+}
+
+.navbar__mobile-sublink {
+  padding: var(--space-3) var(--space-10);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+  transition: color var(--transition-fast);
+}
+
+.navbar__mobile-sublink:hover {
+  color: var(--color-rosa-dark);
+}
+
+.navbar__mobile-divider {
+  height: 4px;
+  background: var(--color-surface);
+}
+
+.navbar__mobile-login {
+  width: 100%;
+  text-align: left;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .navbar__links { display: none; }
+  .navbar__action-btn:not(.navbar__cart) { display: none; }
+  .navbar__login-btn { display: none; }
+  .navbar__hamburger { display: flex; }
+}

@@ -1,0 +1,139 @@
+/* ============================================
+   CATEGORY PAGE
+   ============================================ */
+.category-page {
+  min-height: 60vh;
+  background: var(--color-bg);
+}
+
+.category-page__breadcrumb {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.category-page__breadcrumb a {
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast);
+}
+
+.category-page__breadcrumb a:hover {
+  color: var(--color-rosa-dark);
+}
+
+.category-page__title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-extrabold);
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+}
+
+/* Chips de subcategoría */
+.category-page__subcats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+}
+
+.subcat-chip {
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-muted);
+  background: var(--color-white);
+  border: 2px solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+.subcat-chip:hover {
+  border-color: var(--color-lavanda);
+  color: var(--color-text);
+}
+
+.subcat-chip--active {
+  background: var(--color-text);
+  color: var(--color-white);
+  border-color: var(--color-text);
+}
+
+/* Grilla de productos (versión simple, sin talles/wishlist) */
+.category-page__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.category-page__card {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  padding-bottom: var(--space-4);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.category-page__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.category-page__card-img {
+  aspect-ratio: 1 / 1;
+  background: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  margin-bottom: var(--space-3);
+}
+
+.category-page__card-name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+  padding: 0 var(--space-4);
+  margin-bottom: var(--space-1);
+}
+
+.category-page__card-price {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-extrabold);
+  color: var(--color-rosa-dark);
+  padding: 0 var(--space-4);
+}
+
+/* Estado vacío */
+.category-page__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-16) 0;
+  color: var(--color-text-muted);
+}
+
+.category-page__empty-icon {
+  font-size: 3rem;
+}
+
+.category-page__empty-link {
+  margin-top: var(--space-2);
+  color: var(--color-rosa-dark);
+  font-weight: var(--font-bold);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .category-page__grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .category-page__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 420px) {
+  .category-page__grid { grid-template-columns: 1fr; }
+}
