@@ -1,37 +1,30 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { PRODUCTS } from "../../data/products";
 import "./ProductGrid.css";
 
-// ============================================
-// PRODUCTOS — ahora vienen de src/data/products.js
-// (fuente compartida con las páginas de categoría)
-// ============================================
 const MOCK_PRODUCTS = PRODUCTS;
 
 const FILTERS = [
-  { id: "todos",  label: "Todos" },
-  { id: "ninas",  label: "Niñas" },
-  { id: "ninos",  label: "Niños" },
-  { id: "bebes",  label: "Bebés" },
+  { id: "todos", label: "Todos" },
+  { id: "ninas", label: "Niñas" },
+  { id: "ninos", label: "Niños" },
+  { id: "bebes", label: "Bebés" },
 ];
 
-// Formateador de precio en pesos argentinos
 const formatPrice = (n) =>
-  new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 }).format(n);
+  new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+    maximumFractionDigits: 0,
+  }).format(n);
 
 export default function ProductGrid({ title = "Productos destacados", maxItems = 8 }) {
   const [activeFilter, setActiveFilter] = useState("todos");
-  const [wishlist, setWishlist]         = useState([]);
 
   const filtered = MOCK_PRODUCTS
     .filter((p) => activeFilter === "todos" || p.category === activeFilter)
     .slice(0, maxItems);
-
-  const toggleWishlist = (id) => {
-    setWishlist((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
-    );
-  };
 
   return (
     <section className="product-grid-section section-padding">
@@ -43,7 +36,6 @@ export default function ProductGrid({ title = "Productos destacados", maxItems =
             <h2 className="section-title">{title}</h2>
             <p className="section-subtitle">{filtered.length} productos encontrados</p>
           </div>
-          {/* Filtros */}
           <div className="product-grid__filters">
             {FILTERS.map((f) => (
               <button
@@ -60,40 +52,26 @@ export default function ProductGrid({ title = "Productos destacados", maxItems =
         {/* Grid */}
         <div className="product-grid__items">
           {filtered.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              isWishlisted={wishlist.includes(product.id)}
-              onToggleWishlist={() => toggleWishlist(product.id)}
-            />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
         {/* Ver todos */}
         <div className="product-grid__footer">
-          <a href="/catalogo" className="product-grid__see-all">
+          <Link to="/catalogo" className="product-grid__see-all">
             Ver todo el catálogo →
-          </a>
+          </Link>
         </div>
       </div>
     </section>
   );
 }
 
-// ── Tarjeta de producto individual ──
-function ProductCard({ product, isWishlisted, onToggleWishlist }) {
-  const [selectedSize, setSelectedSize] = useState(null);
-  const [added, setAdded]               = useState(false);
-
-  const handleAddToCart = () => {
-    if (!selectedSize) return; // validar talle seleccionado
-    setAdded(true);
-    setTimeout(() => setAdded(false), 1500);
-    // TODO: conectar con CartContext
-  };
-
+// ── Tarjeta de producto — solo vista, sin compra ──
+function ProductCard({ product }) {
   return (
     <div className="product-card">
+
       {/* Imagen */}
       <div className="product-card__img-wrap">
         {product.image ? (
@@ -104,55 +82,34 @@ function ProductCard({ product, isWishlisted, onToggleWishlist }) {
           </div>
         )}
 
-        {/* Badges */}
+        {/* Badge: SOLO "Nuevo", sin descuentos */}
         <div className="product-card__badges">
-          {product.isNew      && <span className="badge badge--new">Nuevo</span>}
-          {product.discount > 0 && <span className="badge badge--off">{product.discount}% OFF</span>}
+          {product.isNew && <span className="badge badge--new">Nuevo</span>}
         </div>
-
-        {/* Wishlist */}
-        <button
-          className={`product-card__wish ${isWishlisted ? "product-card__wish--active" : ""}`}
-          onClick={onToggleWishlist}
-          aria-label="Agregar a favoritos"
-        >
-          {isWishlisted ? "❤️" : "🤍"}
-        </button>
       </div>
 
       {/* Info */}
       <div className="product-card__info">
         <h3 className="product-card__name">{product.name}</h3>
 
-        {/* Talles */}
+        {/* Talles — solo lectura, no se pueden seleccionar */}
         <div className="product-card__sizes">
           {product.size.map((s) => (
-            <button
-              key={s}
-              className={`size-btn ${selectedSize === s ? "size-btn--active" : ""}`}
-              onClick={() => setSelectedSize(s === selectedSize ? null : s)}
-            >
+            <span key={s} className="size-btn size-btn--readonly">
               {s}
-            </button>
+            </span>
           ))}
         </div>
 
         {/* Precio */}
         <div className="product-card__price">
           <span className="product-card__price-current">{formatPrice(product.price)}</span>
-          {product.originalPrice && (
-            <span className="product-card__price-original">{formatPrice(product.originalPrice)}</span>
-          )}
         </div>
 
-        {/* CTA */}
-        <button
-          className={`product-card__add ${added ? "product-card__add--done" : ""} ${!selectedSize ? "product-card__add--disabled" : ""}`}
-          onClick={handleAddToCart}
-          disabled={added}
-        >
-          {added ? "✓ Agregado" : !selectedSize ? "Elegí un talle" : "Agregar al carrito"}
-        </button>
+        {/* Botón → redirige al catálogo para comprar */}
+        <Link to="/catalogo" className="product-card__add product-card__add-link">
+          Ver en catálogo →
+        </Link>
       </div>
     </div>
   );

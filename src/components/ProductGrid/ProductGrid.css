@@ -131,30 +131,6 @@
   gap: var(--space-1);
 }
 
-/* Wishlist */
-.product-card__wish {
-  position: absolute;
-  top: var(--space-3);
-  right: var(--space-3);
-  width: 34px;
-  height: 34px;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(4px);
-  border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--text-base);
-  transition: transform var(--transition-fast), background var(--transition-fast);
-  box-shadow: var(--shadow-sm);
-}
-
-.product-card__wish:hover,
-.product-card__wish--active {
-  transform: scale(1.1);
-  background: var(--color-white);
-}
-
 /* Info */
 .product-card__info {
   padding: var(--space-4) var(--space-5);
@@ -172,7 +148,7 @@
   line-height: 1.3;
 }
 
-/* Talles */
+/* Talles — solo lectura, sin interacción */
 .product-card__sizes {
   display: flex;
   flex-wrap: wrap;
@@ -192,7 +168,17 @@
   text-align: center;
 }
 
-.size-btn:hover {
+/* Talle solo lectura: sin hover, sin cursor pointer */
+.size-btn--readonly {
+  cursor: default;
+  pointer-events: none;
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+/* Para el catálogo (interactivos) */
+.size-btn:not(.size-btn--readonly):hover {
   border-color: var(--color-lavanda);
   color: var(--color-text);
 }
@@ -218,39 +204,26 @@
   color: var(--color-text);
 }
 
-.product-card__price-original {
-  font-size: var(--text-sm);
-  color: var(--color-text-light);
-  text-decoration: line-through;
-}
-
-/* Botón agregar */
-.product-card__add {
+/* Botón "Ver en catálogo" — link estilizado igual que el botón */
+.product-card__add,
+.product-card__add-link {
+  display: block;
   width: 100%;
   padding: var(--space-3);
   border-radius: var(--radius-lg);
   font-size: var(--text-sm);
   font-weight: var(--font-bold);
+  text-align: center;
   background: var(--color-rosa-dark);
   color: var(--color-white);
   transition: all var(--transition-fast);
   margin-top: auto;
 }
 
-.product-card__add:hover:not(.product-card__add--disabled):not(.product-card__add--done) {
+.product-card__add-link:hover {
   background: var(--color-text);
   transform: translateY(-1px);
-}
-
-.product-card__add--disabled {
-  background: var(--color-border);
-  color: var(--color-text-muted);
-  cursor: not-allowed;
-}
-
-.product-card__add--done {
-  background: var(--color-menta-dark);
-  cursor: default;
+  color: var(--color-white);
 }
 
 /* ── RESPONSIVE ── */
