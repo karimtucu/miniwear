@@ -8,7 +8,7 @@ const CATEGORIES = [
   {
     id: "bebes",
     label:    "Bebés",
-    subtitle: "0 a 24 meses",
+    subtitle: "0 a 3 meses",
     href:     "/bebes",
     emoji:    "🍼",
     color:    "var(--color-rosa-light)",
@@ -17,7 +17,7 @@ const CATEGORIES = [
   {
     id: "ninas",
     label:    "Niñas",
-    subtitle: "1 a 14 años",
+    subtitle: "3 a 6 meses",
     href:     "/ninas",
     emoji:    "🦋",
     color:    "var(--color-lavanda-light)",
@@ -26,7 +26,7 @@ const CATEGORIES = [
   {
     id: "ninos",
     label:    "Niños",
-    subtitle: "1 a 14 años",
+    subtitle: "6 a 12 meses",
     href:     "/ninos",
     emoji:    "⚽",
     color:    "var(--color-menta)",

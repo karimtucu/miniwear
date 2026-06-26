@@ -71,11 +71,15 @@ export default function CategoryPage() {
             {products.map((p) => (
               <div key={p.id} className="category-page__card">
                 <div className="category-page__card-img">
-                  <span>{p.emoji}</span>
+                  {p.image ? (
+                    <img src={p.image} alt={p.name} />
+                  ) : (
+                    <span>{p.emoji}</span>
+                  )}
                 </div>
                 <p className="category-page__card-name">{p.name}</p>
                 <p className="category-page__card-price">
-                  ${p.price.toLocaleString("es-AR")}
+                  {p.price > 0 ? `$${p.price.toLocaleString("es-AR")}` : "Consultar"}
                 </p>
               </div>
             ))}
