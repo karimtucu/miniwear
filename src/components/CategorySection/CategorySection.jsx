@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
+=======
+>>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
 import "./CategorySection.css";
 
 // ============================================
@@ -52,9 +55,15 @@ export default function CategorySection() {
 
         <div className="categories__grid">
           {CATEGORIES.map((cat) => (
+<<<<<<< HEAD
             <Link
               key={cat.id}
               to={cat.href}
+=======
+            <a
+              key={cat.id}
+              href={cat.href}
+>>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
               className="category-card"
               style={{ "--card-bg": cat.color, "--card-accent": cat.accent }}
             >
@@ -64,7 +73,11 @@ export default function CategorySection() {
                 <span className="category-card__sub">{cat.subtitle}</span>
               </div>
               <span className="category-card__arrow">→</span>
+<<<<<<< HEAD
             </Link>
+=======
+            </a>
+>>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
           ))}
         </div>
       </div>

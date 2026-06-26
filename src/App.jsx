@@ -1,4 +1,5 @@
 // ============================================
+<<<<<<< HEAD
 // APP.JSX — Configuración de rutas (Sprint 2)
 // Para agregar una página nueva:
 // 1. Creá el componente en /src/pages/
@@ -20,6 +21,24 @@ import CategoryPage       from "./pages/CategoryPage";
 import SearchResultsPage  from "./pages/SearchResultsPage";
 import NotFoundPage       from "./pages/NotFoundPage";
 
+=======
+// APP.JSX — Página principal (Sprint 1)
+// Acá ensamblás todos los componentes.
+// Para agregar secciones nuevas: importá el componente y poné <ComponenteNuevo /> abajo.
+// ============================================
+
+import "./styles/variables.css";
+
+import Navbar          from "./components/Navbar/Navbar";
+import Hero            from "./components/Hero/Hero";
+import CategorySection from "./components/CategorySection/CategorySection";
+import ProductGrid     from "./components/ProductGrid/ProductGrid";
+import Newsletter      from "./components/Newsletter/Newsletter";
+import Footer          from "./components/Footer/Footer";
+import Chatbot         from "./components/Chatbot/Chatbot";
+import ComplaintButton from "./components/ComplaintButton/ComplaintButton";
+
+>>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
 // Banner de anuncio (opcional — podés comentarlo si no lo necesitás)
 function AnnouncementBar() {
   return (
@@ -39,6 +58,7 @@ function AnnouncementBar() {
 
 export default function App() {
   return (
+<<<<<<< HEAD
     <BrowserRouter>
       {/* Banner superior */}
       <AnnouncementBar />
@@ -63,6 +83,36 @@ export default function App() {
             <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </main>
+=======
+    <>
+      {/* Banner superior */}
+      <AnnouncementBar />
+
+      {/* Navbar fijo */}
+      <Navbar />
+
+      {/* Contenido principal */}
+      <main>
+        {/* 1. Hero / Slider */}
+        <Hero />
+
+        {/* 2. Categorías */}
+        <CategorySection />
+
+        {/* 3. Productos destacados */}
+        <ProductGrid title="Productos destacados" maxItems={8} />
+
+        {/* 4. Newsletter / Notificaciones */}
+        <Newsletter />
+
+        {/*
+          SPRINT 2 → agregar acá:
+          <BannerPromo />
+          <TestimonialsSection />
+          <FeaturedBrands />
+        */}
+      </main>
+>>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
 
       {/* Footer */}
       <Footer />
@@ -70,8 +120,16 @@ export default function App() {
       {/* Chatbot flotante */}
       <Chatbot />
 
+<<<<<<< HEAD
       {/* Botón de quejas y reclamos */}
       <ComplaintButton />
     </BrowserRouter>
   );
 }
+=======
+      {/* Botón de quejas y reclamos (componente de mi compañero) */}
+      <ComplaintButton />
+    </>
+  );
+}
+>>>>>>> 88150f3cc7f490d043c4e6f4efee1f1e0babb79d
