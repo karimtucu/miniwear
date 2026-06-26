@@ -3,13 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import LoginModal from "../LoginModal/LoginModal";
 import { SUBCATEGORIES, CATEGORY_LABELS } from "../../data/products";
+import { useCart } from "../../context/CartContext";
 
-// ============================================
-// DATOS DE NAVEGACIÓN
-// "slug" es el segmento de la URL: /bebes, /ninas, /ninos, /liquidacion, /novedades
-// "submenu" se construye automáticamente desde SUBCATEGORIES para bebés/niñas/niños.
-// Liquidación y Novedades no tienen submenú.
-// ============================================
 const NAV_LINKS = [
   { label: CATEGORY_LABELS.bebes, slug: "bebes", submenu: SUBCATEGORIES.bebes },
   { label: CATEGORY_LABELS.ninas, slug: "ninas", submenu: SUBCATEGORIES.ninas },
@@ -18,34 +13,30 @@ const NAV_LINKS = [
   { label: "Novedades",   slug: "novedades",   submenu: [] },
 ];
 
-// Cuánto se espera (en ms) antes de cerrar el dropdown al salir con el mouse.
-// Esto es lo que arregla el bug de "se cierra muy rápido": le da tiempo a la
-// persona de mover el mouse en diagonal hacia el submenú sin que se cierre.
 const CLOSE_DELAY = 250;
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen]       = useState(false);
   const [activeMenu, setActiveMenu]   = useState(null);
-  const [cartCount]                   = useState(0); // conectar con contexto de carrito
   const [searchOpen, setSearchOpen]   = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [loginOpen, setLoginOpen]     = useState(false);
 
   const closeTimer = useRef(null);
-  const navigate    = useNavigate();
+  const navigate   = useNavigate();
 
-  // Abre el submenú y cancela cualquier cierre pendiente
+  // Contador real del carrito desde el contexto
+  const { totalUnits } = useCart();
+
   const handleEnter = (label) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setActiveMenu(label);
   };
 
-  // Cierra el submenú con un pequeño retraso (evita el cierre brusco)
   const handleLeave = () => {
     closeTimer.current = setTimeout(() => setActiveMenu(null), CLOSE_DELAY);
   };
 
-  // Búsqueda: navega a /buscar?q=...
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     const q = searchQuery.trim();
@@ -83,15 +74,12 @@ export default function Navbar() {
                 )}
               </Link>
 
-              {/* Dropdown submenu */}
               {link.submenu.length > 0 && activeMenu === link.label && (
                 <div
                   className="navbar__dropdown"
                   onMouseEnter={() => handleEnter(link.label)}
                   onMouseLeave={handleLeave}
                 >
-                  {/* Puente invisible que conecta el link con el dropdown,
-                      así el mouse nunca "sale" del área activa al bajar */}
                   <div className="navbar__dropdown-bridge" />
                   {link.submenu.map((item) => (
                     <Link
@@ -120,23 +108,23 @@ export default function Navbar() {
             🔍
           </button>
 
-          {/* Favoritos <button className="navbar__action-btn" aria-label="Favoritos">
-            🤍
-          </button> */}
-         
+          {/* Catálogo */}
+          <Link to="/catalogo" className="navbar__login-btn">
+            Catálogo
+          </Link>
 
-          {/* Iniciar sesión — abre el modal de login */}
+          {/* Iniciar sesión */}
           <button className="navbar__login-btn" onClick={() => setLoginOpen(true)}>
             Iniciar Sesión
           </button>
 
-          {/* Carrito */}
-          <button className="navbar__cart" aria-label="Carrito">
+          {/* Carrito — muestra el contador real */}
+          <Link to="/carrito" className="navbar__cart" aria-label="Carrito">
             🛍
-            {cartCount > 0 && (
-              <span className="navbar__cart-count">{cartCount}</span>
+            {totalUnits > 0 && (
+              <span className="navbar__cart-count">{totalUnits}</span>
             )}
-          </button>
+          </Link>
 
           {/* Hamburguesa mobile */}
           <button
@@ -183,8 +171,6 @@ export default function Navbar() {
               >
                 {link.label}
               </Link>
-              {/* En mobile no hay hover, así que mostramos las subcategorías
-                  siempre visibles debajo de cada sección */}
               {link.submenu.length > 0 && (
                 <div className="navbar__mobile-submenu">
                   {link.submenu.map((item) => (
@@ -202,12 +188,18 @@ export default function Navbar() {
             </div>
           ))}
           <div className="navbar__mobile-divider" />
-          <button className="navbar__mobile-link navbar__mobile-login" onClick={() => { setLoginOpen(true); setMenuOpen(false); }}>
+          <Link to="/catalogo" className="navbar__mobile-link" onClick={() => setMenuOpen(false)}>
+            Catálogo completo
+          </Link>
+          <Link to="/carrito" className="navbar__mobile-link" onClick={() => setMenuOpen(false)}>
+            🛍 Carrito {totalUnits > 0 && `(${totalUnits})`}
+          </Link>
+          <button
+            className="navbar__mobile-link navbar__mobile-login"
+            onClick={() => { setLoginOpen(true); setMenuOpen(false); }}
+          >
             Iniciar sesión
           </button>
-          <Link to="/favoritos" className="navbar__mobile-link" onClick={() => setMenuOpen(false)}>
-            Favoritos
-          </Link>
         </div>
       )}
 
