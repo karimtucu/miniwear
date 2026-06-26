@@ -15,13 +15,15 @@
 
   background: linear-gradient(135deg, var(--color-rosa-dark), var(--color-lavanda));
   color: var(--color-white);
-  text-decoration: none;
+  border: none;
+  font-family: var(--font-body);
 
   padding: var(--space-3) var(--space-5);
   border-radius: var(--radius-full);
 
   font-size: var(--text-sm);
   font-weight: var(--font-bold);
+  cursor: pointer;
 
   box-shadow: var(--shadow-md);
   z-index: 198; /* debajo del chatbot (199/200) pero arriba del resto */
